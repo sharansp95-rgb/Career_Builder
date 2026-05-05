@@ -82,6 +82,7 @@ CORS(app,
          "http://localhost:3001", "http://127.0.0.1:3001",
          "http://10.75.5.233:3000", "http://10.75.5.233:3001",
          "https://career-builder-liart.vercel.app",
+         "https://career-builder.vercel.app",
      ],
      supports_credentials=True)
 
