@@ -4,7 +4,7 @@ const GoogleOAuth = {
   id: "google",
   name: "Google",
   type: "oauth" as const,
-  clientId: process.env.GOOGLE_CLIENT_ID,
+  clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
   issuer: "https://accounts.google.com",
   authorization: {
