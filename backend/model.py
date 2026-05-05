@@ -1,27 +1,26 @@
 """
-model.py — BERT-based job recommendation using sentence-transformers.
+model.py - lightweight job recommendation using TF-IDF similarity.
 
-Loads the SentenceTransformer model once at startup, pre-computes embeddings
-for the static job list, and ranks jobs/candidates via cosine similarity.
+Uses scikit-learn's TfidfVectorizer so the backend can run comfortably on
+small-memory hosts such as Render free tier.
 """
 
 import logging
 import re
+from typing import Any
 
-import numpy as np
-from sentence_transformers import SentenceTransformer
+from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 log = logging.getLogger(__name__)
 
-_MODEL_NAME = "all-MiniLM-L6-v2"
-MODEL: SentenceTransformer | None = None
+MODEL: TfidfVectorizer | None = None
 
-# Cached embeddings for the static job list (populated at Flask startup)
-_static_job_embeddings: np.ndarray | None = None
+# Cached TF-IDF vectors for the static job list (populated at Flask startup)
+_static_job_embeddings: Any | None = None
 _static_jobs: list[dict] | None = None
 
-# ── Skill synonym normalisation ────────────────────────────────────────────────
+# Skill synonym normalisation
 
 SYNONYMS: dict[str, str] = {
     "nodejs": "node.js",
@@ -45,18 +44,13 @@ SYNONYMS: dict[str, str] = {
 
 
 def normalize_text(text: str) -> str:
-    """Lowercase the text and expand common tech abbreviations/synonyms.
-
-    Uses a single-pass combined regex so that canonical forms (e.g. "node.js")
-    cannot be re-matched by a shorter alias (e.g. "js") in the same call.
-    """
+    """Lowercase the text and expand common tech abbreviations/synonyms."""
     text = text.lower()
-    # Longest aliases first so "nodejs" wins over "js" when both could match
     ordered = sorted(SYNONYMS.keys(), key=len, reverse=True)
     pattern = re.compile(
-        r"\b(" + "|".join(re.escape(a) for a in ordered) + r")\b"
+        r"\b(" + "|".join(re.escape(alias) for alias in ordered) + r")\b"
     )
-    return pattern.sub(lambda m: SYNONYMS[m.group(0)], text)
+    return pattern.sub(lambda match: SYNONYMS[match.group(0)], text)
 
 
 _SKILLS: list[str] = [
@@ -74,6 +68,30 @@ _SKILLS: list[str] = [
 ]
 
 
+def _job_search_text(job: dict) -> str:
+    """Build the text used for both TF-IDF matching and skill extraction."""
+    return " ".join(
+        filter(
+            None,
+            [
+                job.get("title", ""),
+                job.get("description", ""),
+                job.get("requirements", ""),
+            ],
+        )
+    )
+
+
+def _new_vectorizer() -> TfidfVectorizer:
+    return TfidfVectorizer(
+        lowercase=True,
+        stop_words="english",
+        ngram_range=(1, 2),
+        max_features=8000,
+        sublinear_tf=True,
+    )
+
+
 def extract_skills(text: str) -> list[str]:
     """
     Extract known tech skills from raw resume/job text.
@@ -82,12 +100,6 @@ def extract_skills(text: str) -> list[str]:
         1. Normalise the text (lowercase + synonym expansion).
         2. For each skill in _SKILLS, apply a whole-word regex match.
         3. Return matched skills in title-case, sorted alphabetically.
-
-    Args:
-        text: Raw string from a resume PDF or job description.
-
-    Returns:
-        Sorted list of matched skill strings in display format.
     """
     normalised = normalize_text(text)
     found: set[str] = set()
@@ -111,50 +123,43 @@ def calculate_skill_score(resume_skills: list[str], job_skills: list[str]) -> fl
 def calculate_match_score(
     resume_skills: list[str],
     job_skills: list[str],
-    resume_embedding: np.ndarray,
-    job_embedding: np.ndarray,
+    resume_embedding: Any,
+    job_embedding: Any,
 ) -> int:
-    """Hybrid score: 70% skill overlap + 30% BERT cosine similarity → int 0-100."""
+    """Hybrid score: 70% skill overlap + 30% TF-IDF cosine similarity."""
     skill_score = calculate_skill_score(resume_skills, job_skills)
-    r = np.array(resume_embedding).reshape(1, -1)
-    j = np.array(job_embedding).reshape(1, -1)
-    bert_score = max(0.0, float(cosine_similarity(r, j)[0][0]))
-    hybrid = (0.70 * skill_score) + (0.30 * bert_score)
+    text_score = max(0.0, float(cosine_similarity(resume_embedding, job_embedding)[0][0]))
+    hybrid = (0.70 * skill_score) + (0.30 * text_score)
     return round(hybrid * 100)
 
 
-# ── Model loading ──────────────────────────────────────────────────────────────
+# Model loading
 
-def load_model() -> SentenceTransformer:
-    """Lazily load and return the SentenceTransformer singleton."""
+def load_model() -> TfidfVectorizer:
+    """Return a lightweight TF-IDF vectorizer singleton."""
     global MODEL
     if MODEL is None:
-        log.info("Loading BERT model: %s …", _MODEL_NAME)
-        MODEL = SentenceTransformer(_MODEL_NAME)
-        log.info("BERT model loaded.")
+        log.info("Initialising TF-IDF vectorizer.")
+        MODEL = _new_vectorizer()
     return MODEL
 
 
 def init_job_embeddings(jobs: list[dict]) -> None:
     """
-    Pre-compute and cache BERT embeddings for the static job list.
+    Pre-compute and cache TF-IDF vectors for the static job list.
 
-    Call this once at Flask startup so recommendation requests reuse the
-    cached embeddings instead of re-encoding on every HTTP call.
-
-    Args:
-        jobs: List of job dicts; each must have a ``description`` key.
+    Kept under the old function name so startup code does not need to change.
     """
-    global _static_job_embeddings, _static_jobs
-    model = load_model()
-    descriptions = [job["description"] for job in jobs]
-    log.info("Pre-computing embeddings for %d static jobs …", len(jobs))
-    _static_job_embeddings = model.encode(descriptions, convert_to_numpy=True, show_progress_bar=False)
+    global MODEL, _static_job_embeddings, _static_jobs
+    MODEL = _new_vectorizer()
+    job_texts = [_job_search_text(job) for job in jobs]
+    log.info("Fitting TF-IDF vectorizer for %d static jobs.", len(jobs))
+    _static_job_embeddings = MODEL.fit_transform(job_texts)
     _static_jobs = jobs
-    log.info("Static job embeddings ready.")
+    log.info("Static job TF-IDF vectors ready.")
 
 
-# ── Ranking ────────────────────────────────────────────────────────────────────
+# Ranking
 
 def rank_jobs(
     resume_text: str,
@@ -163,36 +168,25 @@ def rank_jobs(
     resume_skills: list[str] | None = None,
 ) -> list[dict]:
     """
-    Rank jobs by cosine similarity between resume and job description embeddings.
+    Rank jobs by hybrid skill overlap and TF-IDF text similarity.
 
-    Algorithm:
-        1. Encode ``resume_text`` with the BERT model.
-        2. Compute cosine similarity against pre-cached (or freshly encoded) job embeddings.
-        3. Take the top-``count`` results; attach matchScore (0-100) and missingSkills.
-
-    Args:
-        resume_text:   Raw resume text or comma-joined skill list.
-        jobs:          Job pool to rank. Uses pre-cached static jobs when None.
-        count:         Number of top results to return (clamped to pool size).
-        resume_skills: Skills already extracted from the resume (avoids re-extraction).
-
-    Returns:
-        List of job dicts sorted by descending matchScore, each enriched with
-        ``matchScore`` (int 0-100) and ``missingSkills`` (list[str]).
+    Returns job dicts sorted by descending matchScore, each enriched with
+    ``matchScore`` (int 0-100), ``matchedSkills`` and ``missingSkills``.
     """
-    model = load_model()
-
     if jobs is None:
-        if _static_jobs is None or _static_job_embeddings is None:
-            raise RuntimeError("Static job embeddings not initialised — call init_job_embeddings() first.")
+        if _static_jobs is None or _static_job_embeddings is None or MODEL is None:
+            raise RuntimeError("Static job vectors not initialised - call init_job_embeddings() first.")
         job_pool = _static_jobs
-        job_embs = _static_job_embeddings
+        job_vectors = _static_job_embeddings
+        vectorizer = MODEL
+        resume_vector = vectorizer.transform([resume_text])
     else:
-        descriptions = [job["description"] for job in jobs]
-        job_embs = model.encode(descriptions, convert_to_numpy=True, show_progress_bar=False)
         job_pool = jobs
-
-    resume_emb = model.encode([resume_text], convert_to_numpy=True, show_progress_bar=False)
+        job_texts = [_job_search_text(job) for job in job_pool]
+        vectorizer = _new_vectorizer()
+        vectors = vectorizer.fit_transform([resume_text, *job_texts])
+        resume_vector = vectors[0]
+        job_vectors = vectors[1:]
 
     count = min(count, len(job_pool))
     user_skills = resume_skills if resume_skills else extract_skills(resume_text)
@@ -201,17 +195,12 @@ def rank_jobs(
     results: list[dict] = []
     for idx, job in enumerate(job_pool):
         job_copy = job.copy()
-        job_text = " ".join(filter(None, [
-            job.get("title", ""),
-            job.get("description", ""),
-            job.get("requirements", ""),
-        ]))
-        job_skills = extract_skills(job_text)
+        job_skills = extract_skills(_job_search_text(job))
         job_lower_map = {s.lower().strip(): s for s in job_skills}
         job_lower_set = set(job_lower_map)
 
         job_copy["matchScore"] = calculate_match_score(
-            user_skills, job_skills, resume_emb[0], job_embs[idx]
+            user_skills, job_skills, resume_vector, job_vectors[idx]
         )
         matched_lower = user_lower & job_lower_set
         job_copy["matchedSkills"] = sorted(job_lower_map[k] for k in matched_lower)
@@ -226,31 +215,16 @@ def rank_jobs(
 
 def rank_candidates(job_query: str, candidates: list[dict], count: int = 10) -> list[dict]:
     """
-    Rank candidates against a job description using BERT cosine similarity.
-
-    Algorithm:
-        1. Encode each candidate's ``resume_text`` with BERT.
-        2. Encode the ``job_query`` and compute cosine similarity.
-        3. Return the top-``count`` candidates sorted by descending matchScore.
-
-    Args:
-        job_query:  Job title + requirements text entered by recruiter.
-        candidates: List of candidate dicts, each with a ``resume_text`` field.
-        count:      Maximum number of results (clamped to candidate pool size).
-
-    Returns:
-        List of candidate dicts enriched with ``matchScore``, ``matchedSkills``,
-        and ``missingSkills``.
+    Rank candidates against a job description using skill overlap and TF-IDF text similarity.
     """
-    model = load_model()
-
     if not candidates:
         return []
 
-    candidate_texts = [c.get("resume_text", "") for c in candidates]
-    candidate_embs = model.encode(candidate_texts, convert_to_numpy=True, show_progress_bar=False)
-
-    query_emb = model.encode([job_query], convert_to_numpy=True, show_progress_bar=False)
+    candidate_texts = [candidate.get("resume_text", "") for candidate in candidates]
+    vectorizer = _new_vectorizer()
+    vectors = vectorizer.fit_transform([job_query, *candidate_texts])
+    query_vector = vectors[0]
+    candidate_vectors = vectors[1:]
     count = min(count, len(candidates))
 
     job_skills = extract_skills(job_query)
@@ -269,15 +243,9 @@ def rank_candidates(job_query: str, candidates: list[dict], count: int = 10) -> 
             v for k, v in job_lower_map.items() if k not in candidate_lower
         )
 
-        # Score = fraction of required skills the candidate covers.
-        # BERT similarity between a short skill query and a full resume document is
-        # unreliable and drags the score far below the intuitive skill-coverage number,
-        # so skill overlap is the primary signal (90%) with BERT as a tiebreaker (10%).
         skill_score = len(matched_lower) / len(job_lower_set) if job_lower_set else 0.0
-        r = candidate_embs[idx].reshape(1, -1)
-        q = query_emb[0].reshape(1, -1)
-        bert_score = max(0.0, float(cosine_similarity(r, q)[0][0]))
-        candidate_copy["matchScore"] = round((0.90 * skill_score + 0.10 * bert_score) * 100)
+        text_score = max(0.0, float(cosine_similarity(candidate_vectors[idx], query_vector)[0][0]))
+        candidate_copy["matchScore"] = round((0.90 * skill_score + 0.10 * text_score) * 100)
 
         results.append(candidate_copy)
 

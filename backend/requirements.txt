@@ -7,10 +7,7 @@ flask-compress==1.15
 # PDF parsing
 PyPDF2==3.0.1
 
-# BERT embeddings
-sentence-transformers==3.4.1
-
-# Similarity scoring
+# Lightweight similarity scoring
 scikit-learn==1.6.1
 numpy>=1.24.0
 
