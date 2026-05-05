@@ -1,0 +1,19 @@
+
+> career-builder@0.1.0 dev
+> cross-env NODE_OPTIONS=--max_old_space_size=2048 next dev -H 0.0.0.0 --webpack
+
+⚠ Port 3000 is in use by process 21780, using available port 3001 instead.
+▲ Next.js 16.2.3 (webpack)
+- Local:         http://localhost:3001
+- Network:       http://0.0.0.0:3001
+- Environments: .env.local
+✓ Ready in 485ms
+⨯ Another next dev server is already running.
+
+- Local:        http://localhost:3000
+- PID:          21780
+- Dir:          S:\cs\6th sem\Minor_Project\minor project Copy
+- Log:          .next\dev\logs\next-development.log
+
+Run taskkill /PID 21780 /F to stop it.
+[?25h

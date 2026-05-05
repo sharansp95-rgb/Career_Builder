@@ -1,0 +1,223 @@
+19:15:45 [INFO] auth: migrate_db() completed successfully.
+19:15:45 [INFO] __main__: Loaded 8 jobs from jobs.json.
+19:15:45 [INFO] model: Loading BERT model: all-MiniLM-L6-v2 …
+19:15:45 [INFO] sentence_transformers.SentenceTransformer: Use pytorch device_name: cpu
+19:15:45 [INFO] sentence_transformers.SentenceTransformer: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+19:15:50 [INFO] model: BERT model loaded.
+19:15:50 [INFO] model: Pre-computing embeddings for 8 static jobs …
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 28.23it/s]
+19:15:50 [INFO] model: Static job embeddings ready.
+Job embeddings precomputed — 8 jobs ready
+ * Serving Flask app 'app'
+ * Debug mode: on
+19:15:50 [INFO] werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.75.5.233:5000
+19:15:50 [INFO] werkzeug: [33mPress CTRL+C to quit[0m
+19:15:50 [INFO] werkzeug:  * Restarting with stat
+19:15:56 [INFO] auth: migrate_db() completed successfully.
+19:15:56 [INFO] __main__: Loaded 8 jobs from jobs.json.
+19:15:56 [INFO] model: Loading BERT model: all-MiniLM-L6-v2 …
+19:15:56 [INFO] sentence_transformers.SentenceTransformer: Use pytorch device_name: cpu
+19:15:56 [INFO] sentence_transformers.SentenceTransformer: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+19:16:00 [INFO] model: BERT model loaded.
+19:16:00 [INFO] model: Pre-computing embeddings for 8 static jobs …
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 29.11it/s]
+19:16:00 [INFO] model: Static job embeddings ready.
+Job embeddings precomputed — 8 jobs ready
+19:16:00 [WARNING] werkzeug:  * Debugger is active!
+19:16:00 [INFO] werkzeug:  * Debugger PIN: 119-034-377
+20:07:13 [INFO] werkzeug:  * Detected change in 'C:\\Users\\Rog\\Desktop\\minor project\\backend\\app.py', reloading
+Exception in thread Thread-4 (serve_forever):
+Traceback (most recent call last):
+  File "C:\Users\Rog\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1045, in _bootstrap_inner
+    self.run()
+  File "C:\Users\Rog\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 982, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Rog\Desktop\minor project\.venv\Lib\site-packages\werkzeug\serving.py", line 820, in serve_forever
+    super().serve_forever(poll_interval=poll_interval)
+  File "C:\Users\Rog\AppData\Local\Programs\Python\Python311\Lib\socketserver.py", line 233, in serve_forever
+    ready = selector.select(poll_interval)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Rog\AppData\Local\Programs\Python\Python311\Lib\selectors.py", line 323, in select
+    r, w, _ = self._select(self._readers, self._writers, [], timeout)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Rog\AppData\Local\Programs\Python\Python311\Lib\selectors.py", line 314, in _select
+    r, w, x = select.select(r, w, w, timeout)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [WinError 10038] An operation was attempted on something that is not a socket
+h device_name: cpu
+19:28:14 [INFO] sentence_transformers.SentenceTransformer: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+19:28:18 [INFO] model: BERT model loaded.
+19:28:18 [INFO] model: Pre-computing embeddings for 8 static jobs …
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 25.43it/s]
+19:28:19 [INFO] model: Static job embeddings ready.
+Job embeddings precomputed — 8 jobs ready
+19:28:19 [WARNING] werkzeug:  * Debugger is active!
+19:28:19 [INFO] werkzeug:  * Debugger PIN: 119-034-377
+20:07:12 [INFO] werkzeug:  * Detected change in 'C:\\Users\\Rog\\Desktop\\minor project\\backend\\app.py', reloading
+Exception in thread Thread-4 (serve_forever):
+Traceback (most recent call last):
+  File "C:\Users\Rog\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1045, in _bootstrap_inner
+    self.run()
+  File "C:\Users\Rog\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 982, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Rog\Desktop\minor project\.venv\Lib\site-packages\werkzeug\serving.py", line 820, in serve_forever
+20:07:17 [INFO] werkzeug:  * Restarting with stat
+20:07:40 [INFO] auth: migrate_db() completed successfully.
+20:07:40 [INFO] __main__: Loaded 8 jobs from jobs.json.
+20:07:40 [INFO] model: Loading BERT model: all-MiniLM-L6-v2 …
+20:07:40 [INFO] sentence_transformers.SentenceTransformer: Use pytorch device_name: cpu
+20:07:40 [INFO] sentence_transformers.SentenceTransformer: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+20:07:45 [INFO] model: BERT model loaded.
+20:07:45 [INFO] model: Pre-computing embeddings for 8 static jobs …
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  3.76it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  3.76it/s]
+20:07:45 [INFO] model: Static job embeddings ready.
+Job embeddings precomputed — 8 jobs ready
+20:07:45 [WARNING] werkzeug:  * Debugger is active!
+20:07:45 [INFO] werkzeug:  * Debugger PIN: 119-034-377
+20:07:50 [INFO] werkzeug:  * Detected change in 'C:\\Users\\Rog\\Desktop\\minor project\\backend\\auth.py', reloading
+20:07:51 [INFO] werkzeug:  * Restarting with stat
+20:07:57 [INFO] auth: migrate_db() completed successfully.
+20:07:57 [INFO] __main__: Loaded 8 jobs from jobs.json.
+20:07:57 [INFO] model: Loading BERT model: all-MiniLM-L6-v2 …
+20:07:57 [INFO] sentence_transformers.SentenceTransformer: Use pytorch device_name: cpu
+20:07:57 [INFO] sentence_transformers.SentenceTransformer: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+20:08:02 [INFO] model: BERT model loaded.
+20:08:02 [INFO] model: Pre-computing embeddings for 8 static jobs …
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 30.37it/s]
+20:08:02 [INFO] model: Static job embeddings ready.
+Job embeddings precomputed — 8 jobs ready
+20:08:02 [WARNING] werkzeug:  * Debugger is active!
+20:08:02 [INFO] werkzeug:  * Debugger PIN: 119-034-377
+20:12:08 [INFO] werkzeug:  * Detected change in 'C:\\Users\\Rog\\Desktop\\minor project\\backend\\auth.py', reloading
+20:12:08 [INFO] werkzeug:  * Restarting with stat
+20:12:14 [INFO] auth: migrate_db() completed successfully.
+20:12:14 [INFO] __main__: Loaded 8 jobs from jobs.json.
+20:12:14 [INFO] model: Loading BERT model: all-MiniLM-L6-v2 …
+20:12:14 [INFO] sentence_transformers.SentenceTransformer: Use pytorch device_name: cpu
+20:12:14 [INFO] sentence_transformers.SentenceTransformer: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+20:12:18 [INFO] model: BERT model loaded.
+20:12:18 [INFO] model: Pre-computing embeddings for 8 static jobs …
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 25.34it/s]
+20:12:18 [INFO] model: Static job embeddings ready.
+Job embeddings precomputed — 8 jobs ready
+20:12:18 [WARNING] werkzeug:  * Debugger is active!
+20:12:18 [INFO] werkzeug:  * Debugger PIN: 119-034-377
+20:13:34 [INFO] werkzeug:  * Detected change in 'C:\\Users\\Rog\\Desktop\\minor project\\backend\\auth.py', reloading
+20:13:34 [INFO] werkzeug:  * Restarting with stat
+20:13:40 [INFO] auth: migrate_db() completed successfully.
+20:13:40 [INFO] __main__: Loaded 8 jobs from jobs.json.
+20:13:40 [INFO] model: Loading BERT model: all-MiniLM-L6-v2 …
+20:13:40 [INFO] sentence_transformers.SentenceTransformer: Use pytorch device_name: cpu
+20:13:40 [INFO] sentence_transformers.SentenceTransformer: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+20:13:44 [INFO] model: BERT model loaded.
+20:13:44 [INFO] model: Pre-computing embeddings for 8 static jobs …
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 21.34it/s]
+20:13:44 [INFO] model: Static job embeddings ready.
+Job embeddings precomputed — 8 jobs ready
+20:13:44 [WARNING] werkzeug:  * Debugger is active!
+20:13:44 [INFO] werkzeug:  * Debugger PIN: 119-034-377
+20:16:23 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:16:23] "OPTIONS /api/auth/google HTTP/1.1" 200 -
+20:16:23 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:16:23] "POST /api/auth/google HTTP/1.1" 200 -
+20:16:23 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:16:23] "[31m[1mPOST /api/auth/google HTTP/1.1[0m" 401 -
+20:16:26 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:16:26] "OPTIONS /api/auth/set-role HTTP/1.1" 200 -
+20:16:26 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:16:26] "[31m[1mPOST /api/auth/set-role HTTP/1.1[0m" 401 -
+20:16:28 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:16:28] "[31m[1mPOST /api/auth/set-role HTTP/1.1[0m" 401 -
+20:16:46 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:16:46] "OPTIONS /api/auth/set-role HTTP/1.1" 200 -
+20:16:46 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:16:46] "[31m[1mPOST /api/auth/set-role HTTP/1.1[0m" 401 -
+20:18:22 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:18:22] "OPTIONS /api/auth/set-role HTTP/1.1" 200 -
+20:18:22 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:18:22] "POST /api/auth/set-role HTTP/1.1" 200 -
+20:18:31 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:18:31] "[31m[1mPOST /api/upload HTTP/1.1[0m" 401 -
+20:19:31 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:19:31] "OPTIONS /api/upload HTTP/1.1" 200 -
+20:19:31 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:19:31] "POST /api/upload HTTP/1.1" 200 -
+20:19:31 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:19:31] "OPTIONS /api/recommend HTTP/1.1" 200 -
+20:19:31 [INFO] scraper: Scraping LinkedIn for 'c++ html java developer' ...
+20:19:32 [INFO] scraper: LinkedIn: 8 jobs scraped
+20:19:32 [INFO] scraper: Scraping Indeed India for 'c++ html java developer' ...
+20:19:32 [WARNING] scraper: Indeed scrape failed: 404 Client Error: Not Found for url: https://in.indeed.com/rss?q=c%2B%2B%20html%20java%20developer&l=India&sort=date — skipping source.
+20:19:32 [INFO] scraper: Scraping Internshala for 'c++ html java developer' ...
+20:19:33 [INFO] scraper: Internshala: 15 jobs scraped
+20:19:33 [INFO] scraper: Scrape complete — 23 unique jobs.
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  7.12it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  7.12it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 107.17it/s]
+20:19:33 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:19:33] "POST /api/recommend HTTP/1.1" 200 -
+20:19:34 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:19:34] "OPTIONS /api/user/profile HTTP/1.1" 200 -
+20:19:34 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:19:34] "OPTIONS /api/user/profile HTTP/1.1" 200 -
+20:19:34 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:19:34] "GET /api/user/profile HTTP/1.1" 200 -
+20:19:34 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:19:34] "GET /api/user/profile HTTP/1.1" 200 -
+20:19:41 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:19:41] "OPTIONS /api/user/profile HTTP/1.1" 200 -
+20:19:41 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:19:41] "OPTIONS /api/user/profile HTTP/1.1" 200 -
+20:19:41 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:19:41] "GET /api/user/profile HTTP/1.1" 200 -
+20:19:41 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:19:41] "GET /api/user/profile HTTP/1.1" 200 -
+20:19:50 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:19:50] "OPTIONS /api/upload HTTP/1.1" 200 -
+20:19:50 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:19:50] "POST /api/upload HTTP/1.1" 200 -
+20:19:50 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:19:50] "OPTIONS /api/recommend HTTP/1.1" 200 -
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  8.51it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  8.47it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 141.76it/s]
+20:19:50 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:19:50] "POST /api/recommend HTTP/1.1" 200 -
+20:19:50 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:19:50] "OPTIONS /api/user/profile HTTP/1.1" 200 -
+20:19:50 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:19:50] "OPTIONS /api/user/profile HTTP/1.1" 200 -
+20:19:50 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:19:50] "GET /api/user/profile HTTP/1.1" 200 -
+20:19:50 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:19:50] "GET /api/user/profile HTTP/1.1" 200 -
+20:20:00 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:20:00] "OPTIONS /api/user/profile HTTP/1.1" 200 -
+20:20:00 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:20:00] "OPTIONS /api/user/profile HTTP/1.1" 200 -
+20:20:00 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:20:00] "GET /api/user/profile HTTP/1.1" 200 -
+20:20:00 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:20:00] "GET /api/user/profile HTTP/1.1" 200 -
+20:20:56 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:20:56] "OPTIONS /api/upload HTTP/1.1" 200 -
+20:20:56 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:20:56] "POST /api/upload HTTP/1.1" 200 -
+20:20:56 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:20:56] "OPTIONS /api/recommend HTTP/1.1" 200 -
+20:20:56 [INFO] scraper: Scraping LinkedIn for 'artificial intelligence c++ docker developer' ...
+20:20:57 [INFO] scraper: LinkedIn: 10 jobs scraped
+20:20:57 [INFO] scraper: Scraping Indeed India for 'artificial intelligence c++ docker developer' ...
+20:20:57 [WARNING] scraper: Indeed scrape failed: 404 Client Error: Not Found for url: https://in.indeed.com/rss?q=artificial%20intelligence%20c%2B%2B%20docker%20developer&l=India&sort=date — skipping source.
+20:20:57 [INFO] scraper: Scraping Internshala for 'artificial intelligence c++ docker developer' ...
+20:20:58 [INFO] scraper: Internshala: 15 jobs scraped
+20:20:58 [INFO] scraper: Scrape complete — 25 unique jobs.
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  6.10it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  6.10it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 90.61it/s]
+20:20:58 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:20:58] "POST /api/recommend HTTP/1.1" 200 -
+20:20:58 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:20:58] "OPTIONS /api/user/profile HTTP/1.1" 200 -
+20:20:58 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:20:58] "OPTIONS /api/user/profile HTTP/1.1" 200 -
+20:20:58 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:20:58] "GET /api/user/profile HTTP/1.1" 200 -
+20:20:58 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:20:58] "GET /api/user/profile HTTP/1.1" 200 -
+20:21:05 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:21:05] "OPTIONS /api/user/profile HTTP/1.1" 200 -
+20:21:05 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:21:05] "OPTIONS /api/user/profile HTTP/1.1" 200 -
+20:21:05 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:21:05] "GET /api/user/profile HTTP/1.1" 200 -
+20:21:05 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:21:05] "GET /api/user/profile HTTP/1.1" 200 -
+20:21:15 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:21:15] "[31m[1mGET /api/get_notifications HTTP/1.1[0m" 401 -
+20:21:15 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:21:15] "[31m[1mGET /api/get_notifications HTTP/1.1[0m" 401 -
+20:21:36 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:21:36] "OPTIONS /api/user/profile HTTP/1.1" 200 -
+20:21:36 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:21:36] "OPTIONS /api/user/profile HTTP/1.1" 200 -
+20:21:36 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:21:36] "GET /api/user/profile HTTP/1.1" 200 -
+20:21:36 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:21:36] "GET /api/user/profile HTTP/1.1" 200 -
+20:22:08 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:22:08] "OPTIONS /api/user/profile HTTP/1.1" 200 -
+20:22:08 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:22:08] "OPTIONS /api/user/profile HTTP/1.1" 200 -
+20:22:08 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:22:08] "GET /api/user/profile HTTP/1.1" 200 -
+20:22:08 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:22:08] "GET /api/user/profile HTTP/1.1" 200 -
+20:22:10 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:22:10] "OPTIONS /api/get_notifications HTTP/1.1" 200 -
+20:22:10 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:22:10] "OPTIONS /api/get_notifications HTTP/1.1" 200 -
+20:22:10 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:22:10] "GET /api/get_notifications HTTP/1.1" 200 -
+20:22:10 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:22:10] "GET /api/get_notifications HTTP/1.1" 200 -
+20:22:49 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:22:49] "OPTIONS /api/auth/google HTTP/1.1" 200 -
+20:22:49 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:22:49] "POST /api/auth/google HTTP/1.1" 200 -
+20:22:49 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:22:49] "[31m[1mPOST /api/auth/google HTTP/1.1[0m" 401 -
+20:22:51 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:22:51] "OPTIONS /api/auth/set-role HTTP/1.1" 200 -
+20:22:51 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:22:51] "POST /api/auth/set-role HTTP/1.1" 200 -
+20:23:46 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:23:46] "OPTIONS /api/recruit_candidates HTTP/1.1" 200 -
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 37.40it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 148.58it/s]
+20:23:46 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:23:46] "POST /api/recruit_candidates HTTP/1.1" 200 -
+20:23:59 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:23:59] "OPTIONS /api/shortlist HTTP/1.1" 200 -
+20:24:04 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:24:04] "POST /api/shortlist HTTP/1.1" 200 -
+20:24:06 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:24:06] "POST /api/shortlist HTTP/1.1" 200 -
+20:24:18 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:24:18] "OPTIONS /api/get_notifications HTTP/1.1" 200 -
+20:24:18 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:24:18] "OPTIONS /api/get_notifications HTTP/1.1" 200 -
+20:24:18 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:24:18] "GET /api/get_notifications HTTP/1.1" 200 -
+20:24:18 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:24:18] "GET /api/get_notifications HTTP/1.1" 200 -
+20:24:36 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:24:36] "POST /api/auth/logout HTTP/1.1" 200 -
+20:25:08 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:25:08] "OPTIONS /api/auth/register HTTP/1.1" 200 -
+20:25:08 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:25:08] "[31m[1mPOST /api/auth/register HTTP/1.1[0m" 409 -
+20:25:11 [INFO] werkzeug: 10.75.5.233 - - [25/Apr/2026 20:25:11] "[31m[1mPOST /api/auth/register HTTP/1.1[0m" 409 -
+20:32:11 [INFO] werkzeug:  * Detected change in 'C:\\Users\\Rog\\Desktop\\minor project\\backend\\app.py', reloading

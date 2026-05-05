@@ -1,0 +1,29 @@
+# Web framework
+Flask==3.1.0
+Flask-Cors==5.0.0
+flask-limiter==3.9.0
+flask-compress==1.15
+
+# PDF parsing
+PyPDF2==3.0.1
+
+# BERT embeddings
+sentence-transformers==3.4.1
+
+# Similarity scoring
+scikit-learn==1.6.1
+numpy>=1.24.0
+
+# HTTP client for job scraping
+requests==2.32.3
+beautifulsoup4>=4.12.0
+lxml>=5.0.0
+
+# JWT authentication
+PyJWT==2.10.1
+
+# Google OAuth
+google-auth==2.38.0
+
+# Environment variables
+python-dotenv==1.0.1

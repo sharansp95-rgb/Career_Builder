@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "title": "Senior Frontend Engineer",
+    "company": "TCS",
+    "location": "Bangalore",
+    "description": "We are looking for a Senior Frontend Engineer with deep expertise in React, Next.js, and modern CSS frameworks like Tailwind CSS. Experience with state management and building scalable UI components is essential."
+  },
+  {
+    "id": 2,
+    "title": "React Developer",
+    "company": "Infosys",
+    "location": "Mumbai",
+    "description": "Seeking a React Developer to join our core product team. You will be dealing with complex component logic, React hooks, REST APIs, and performance optimization in large single page applications."
+  },
+  {
+    "id": 3,
+    "title": "Full Stack Developer",
+    "company": "Razorpay",
+    "location": "Pune",
+    "description": "Looking for a Full Stack Developer skilled in Node.js, Express, React, and PostgreSQL. You will build and maintain APIs, integrate third-party services, and work on frontend features."
+  },
+  {
+    "id": 4,
+    "title": "Web Developer (React/Next.js)",
+    "company": "Wipro",
+    "location": "Hyderabad",
+    "description": "Join our agency! We need a Web Developer who excels at translating Figma designs into responsive Next.js pages using Tailwind CSS and Framer Motion for animations."
+  },
+  {
+    "id": 5,
+    "title": "UI/UX Developer",
+    "company": "Swiggy",
+    "location": "Chennai",
+    "description": "We need a hybrid designer and developer. Proficiency in CSS animations, accessibility standards, frontend testing frameworks, and Javascript is required."
+  },
+  {
+    "id": 6,
+    "title": "Frontend Team Lead",
+    "company": "Zepto",
+    "location": "Delhi",
+    "description": "Leadership role for an experienced frontend architect. Expertise in TypeScript, Next.js App Router, performance auditing, and mentoring junior engineers."
+  },
+  {
+    "id": 7,
+    "title": "Data Scientist",
+    "company": "TCS",
+    "location": "Bangalore",
+    "description": "Looking for a Data Scientist familiar with Python, pandas, scikit-learn, and NLP libraries like spaCy and NLTK. Experience with transformer models is a plus."
+  },
+  {
+    "id": 8,
+    "title": "Backend Python Developer",
+    "company": "Razorpay",
+    "location": "Bangalore",
+    "description": "We are seeking a backend developer proficient in Python, Flask, FastAPI, and working with complex database queries, SQLAlchemy, and microservices architecture."
+  }
+]
